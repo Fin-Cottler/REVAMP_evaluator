@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home - Performance Evaluation Creator</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="css/index.css" media="screen">
+        <script src="script.js"></script>
+    
+    </head>
+<body>
+    <div class="container">
+        <div class="content">
+            <img src="images/uva-logo.png" alt="logo" id="logo"></img> 
+            <div class="title">Performance Evaluation Creator</div>
+            <div class="file-input-container">
+                <input type="file" name="csvFile" id="csvFile" accept=".csv">
+                <label for="csvFile">Upload CSV</label>
+            </div>
+        </div>
+        <pre id="output"></pre>
+        <img src="images/uva_background.png" alt="background" id="background"></img> 
+    </div>
+
+    <script>
+
+        const fileInput = document.getElementById("csvFile");
+        fileInput.addEventListener("change", function () {
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+                reader.onload = function(e) {
+                    const content = e.target.result;
+                    array_str = JSON.stringify(csvToArray(content));
+                    sessionStorage.setItem('array', array_str);
+                    openPage()
+                    
+                    
+
+                };
+                reader.readAsText(file);
+        });
+
+        
+
+        function csvToArray(data, delimiter = ',') {
+
+            const titles = data.slice(0, data
+                .indexOf('\r\n')).split(delimiter);
+        
+            const titleValues = data.slice(data
+                .indexOf('\n') + 1).split('\r\n');
+
+            const ansArray = titleValues.map(function (v) {
+        
+                const values = v.split(delimiter);
+        
+                const storeKeyValue = titles.reduce(
+                    function (obj, title, index) {
+                        obj[title] = values[index];
+                        return obj;
+                    }, {});
+        
+                return storeKeyValue;
+            });
+        
+            return ansArray;
+        };
+        
+                
+
+        function openPage(){
+            window.location = 'editor.html';
+        }
+
+    </script>
+</body>
+</html>   
