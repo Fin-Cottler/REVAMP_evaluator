@@ -69,7 +69,7 @@
     grid-row-end: 10;
 
     display: grid;
-    grid-template-rows: 1fr 2fr 1.5fr;
+    grid-template-rows: 1fr 1.5fr 2fr;
     align-items: center;
 
 }
@@ -87,7 +87,7 @@
 /* elements */
     /* images */
     img{
-        width: 100%;
+        width: 95%;
         max-height: 100%;
         object-fit: cover;
     }
@@ -245,4 +245,10 @@
 
 .right {
     text-align: right;
+}
+
+#graph {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2.5fr 1fr;
 }
