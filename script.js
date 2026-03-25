@@ -1,4 +1,3 @@
-import Plotly from 'plotly.js';
 
 function makePortraits(numPortraits){
     for(i=2; i < numPortraits +1; i++){
@@ -24,7 +23,8 @@ function fillPortraits(){
 
         portrait.querySelector('#name').innerHTML = csv[i].name
         portrait.querySelector('#year').innerHTML = csv[i].year
-        portrait.querySelector('#graph').innerHTML = makeGraph(csv, i)
+        portrait.querySelector('#salary3yr').innerHTML = csv[i].salary3yr
+        portrait.querySelector('#courses3yr').innerHTML = csv[i].courses3yr
         portrait.querySelector('#advisees').innerHTML = csv[i].advisees
         portrait.querySelector('#undergrad').innerHTML = csv[i].undergrad
         portrait.querySelector('#grad').innerHTML = csv[i].grad
